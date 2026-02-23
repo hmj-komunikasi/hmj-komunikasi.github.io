@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HMJK STIAMI - Himpunan Mahasiswa Jurusan Komunikasi</title>
+  <link rel="icon" href="images.jpeg" type="image.jpeg">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    :root {
+      --biru-tua: #0b2c56;
+      --abu: #f2f2f2;
+      --putih: #ffffff;
+      --transparan-biru: rgba(11, 44, 86, 0.7);
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: #333;
+      scroll-behavior: smooth;
+    }
+
+    .navbar-brand img {
+      height: 40px;
+      width: auto;
+      border-radius: 50%;
+    }
+
+    /* Navbar */
+    .navbar {
+      background-color: var(--biru-tua) !important;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .navbar-brand {
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    .nav-link {
+      color: var(--putih) !important;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-link:hover {
+      color: #00b4d8 !important;
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      background: linear-gradient(var(--transparan-biru), var(--transparan-biru)),
+        url('https://i.ytimg.com/vi/yAdxeEEpRI0/maxresdefault.jpg') no-repeat center center;
+      background-size: cover;
+      /* pastikan gambar menutupi layar */
+      background-position: center center;
+      /* posisi gambar tetap di tengah */
+      background-attachment: fixed;
+      /* efek parallax (opsional) */
+      width: 100%;
+      height: 100vh;
+      /* penuh 1 layar */
+      color: var(--putih);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    /* Tombol ke atas */
+    #btnScrollTop {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 99;
+      background-color: var(--biru-tua);
+      color: var(--putih);
+      border: none;
+      outline: none;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      font-size: 22px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(20px);
+      transition: all 0.4s ease;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    #btnScrollTop.show {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    #btnScrollTop:hover {
+      background-color: #00b4d8;
+      transform: translateY(-5px);
+    }
+
+    /* batas */
+
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-top: 15px;
+    }
+
+    .btn-custom {
+      background-color: var(--putih);
+      color: var(--biru-tua);
+      border-radius: 30px;
+      padding: 10px 25px;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+
+    .btn-custom:hover {
+      background-color: #00b4d8;
+      color: var(--putih);
+    }
+
+    /* Section */
+    .section-padding {
+      padding: 80px 0;
+    }
+
+    .bg-light-gray {
+      background-color: #f2f2f2;
+    }
+
+    .card-clickable {
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card-clickable:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
+    }
+
+    .card img {
+      width: 100%;
+      height: 300px;
+      border-radius: 12px 12px 0 0;
+      object-fit: cover;
+    }
+
+    footer {
+      background-color: var(--biru-tua);
+      color: var(--putih);
+      padding: 20px 0;
+    }
+
+    footer p {
+      margin: 0;
+      font-size: 0.95rem;
+    }
+
+    .carousel-item .card {
+      border: none;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+      filter: invert(1);
+    }
+
+    .card-body p {
+      font-size: 0.9rem;
+    }
+
+    .scroll-wrapper {
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 40px;
+      cursor: grab;
+    }
+
+    .scroll-track {
+      display: flex;
+      gap: 20px;
+      will-change: transform;
+    }
+
+    .kartu {
+      background: #1b1b1b;
+      border-radius: 12px;
+      color: white;
+      width: 280px;
+      flex-shrink: 0;
+      padding-bottom: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+      transition: transform 0.3s;
+    }
+
+    .kartu:hover {
+      transform: scale(1.05);
+    }
+
+    .card h6 {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .card p {
+      font-size: 0.9rem;
+      padding: 0 10px;
+    }
+
+    /* Terapkan gradasi mulai dari profil organisasi sampai kontak & informasi */
+    #profil,
+    #divisi,
+    #kegiatan,
+    #artikel,
+    #kontak,
+    footer {
+      background: linear-gradient(180deg, #0a0f2c, #0f172a, #101820);
+      color: #f5f5f5;
+    }
+
+    /* Sesuaikan elemen dalam section agar kontras */
+    #profil h2,
+    #divisi h2,
+    #kegiatan h2,
+    #artikel h2,
+    #kontak h2 {
+      color: #ffffff;
+    }
+
+    #profil p,
+    #divisi p,
+    #kegiatan p,
+    #artikel p,
+    #kontak p {
+      color: #d0d6e0;
+    }
+
+    /* Card dan box di dalam section tetap elegan */
+    #profil .card,
+    #divisi .card,
+    #kegiatan .card,
+    #artikel .card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #fff;
+    }
+
+    #kontak .card {
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+    }
+
+    /* Responsif */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+
+      .card img {
+        height: 300px;
+      }
+
+      .kartu {
+        width: 240px;
+      }
+    }
+
+    .border {
+      border: 1px solid #ddd !important;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#home" data-aos="fade-right">
+        <img src="images.jpeg" alt="Logo HMJK"> HMJK STIAMI
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav d-flex flex-row gap-3" data-aos="fade-left">
+          <li class="nav-item"><a class="nav-link" href="https://www.instagram.com/hmj_komunikasi" target="_blank"><i
+                class="bi bi-instagram"></i></a></li>
+          <li class="nav-item"><a class="nav-link" href="https://www.youtube.com/@hmj_komunikasi" target="_blank"><i
+                class="bi bi-youtube"></i></a></li>
+          <li class="nav-item"><a class="nav-link" href="https://www.tiktok.com/@hmj_komunikasi.stiami"
+              target="_blank"><i class="bi bi-tiktok"></i></a></li>
+          <li class="nav-item"><a class="nav-link" href="mailto:hmjk@stiami.ac.id"><i class="bi bi-envelope"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section id="home" class="hero">
+    <div class="container" data-aos="zoom-in">
+      <h1>Selamat Datang di Himpunan Mahasiswa Jurusan Komunikasi</h1>
+      <p>Institut STIAMI - Membangun Generasi Komunikator Unggul</p>
+    </div>
+  </section>
+
+  <!-- Profil -->
+  <section id="profil" class="section-padding bg-light-gray">
+    <div class="container text-center">
+      <h2 data-aos="zoom-in">Profil Organisasi</h2>
+      <div class="row">
+        <div class="col-md-4 mb-4" data-aos="fade-up">
+          <div class="card h-100">
+            <img src="https://via.placeholder.com/300x200?text=Sejarah" class="card-img-top">
+            <div class="card-body">
+              <h5>Sejarah dan Latar Belakang</h5>
+              <p>HMJK berdiri tahun 2010 di Institut STIAMI sebagai wadah pengembangan potensi mahasiswa komunikasi.
+                Kini menjadi pusat kegiatan akademik dan sosial mahasiswa jurusan.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4" data-aos="fade-up">
+          <div class="card h-100">
+            <img src="https://via.placeholder.com/300x200?text=Visi+Misi" class="card-img-top">
+            <div class="card-body">
+              <h5>Visi & Misi</h5>
+              <p><strong>Visi:</strong> Menjadi himpunan mahasiswa komunikasi unggul nasional.<br><strong>Misi:</strong>
+                Meningkatkan kompetensi, mengabdi ke masyarakat, dan berkolaborasi dengan industri.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4" data-aos="fade-up">
+          <div class="card h-100">
+            <img src="https://via.placeholder.com/300x200?text=Struktur" class="card-img-top">
+            <div class="card-body">
+              <h5>Struktur & Kepemimpinan</h5>
+              <p>Dipimpin oleh Ketua Umum, Wakil, Sekretaris, Bendahara, serta divisi-divisi yang mendukung visi
+                organisasi secara profesional dan demokratis.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Struktur Organisasi -->
+  <section id="divisi" class="section-padding">
+    <div class="container">
+      <h2 class="text-center mb-5" data-aos="zoom-in">Struktur Organisasi HMJK STIAMI</h2>
+
+      <!-- Ketua Umum -->
+      <div class="row align-items-center mb-5 p-4 rounded shadow-sm" data-aos="fade-right">
+        <div class="col-md-5 text-center">
+          <img src="ketum.jpg" alt="Ketua Umum" class="img-fluid rounded shadow-sm">
+        </div>
+        <div class="col-md-7">
+          <h4 class="fw-bold">Ketua Umum</h4>
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Totam, dolorem. Tenetur dignissimos iure modi
+            velit, animi error explicabo facilis doloremque, voluptates maiores, dolor iusto. Deserunt, excepturi velit.
+            Officiis qui, accusantium quo mollitia nobis eius natus. Molestiae iure accusantium libero, at, hic
+            laboriosam, quam quidem ipsum enim ea vitae cupiditate maiores!</p>
+        </div>
+      </div>
+
+      <!-- BPH dan Divisi -->
+      <div class="row text-center justify-content-center">
+        <div class="col-md-4 mb-4" data-aos="fade-up">
+          <div class="card card-clickable h-100 shadow-sm" data-bs-toggle="collapse" data-bs-target="#bphCollapse">
+            <img src="https://wallpapercave.com/wp/wp5194575.jpg" class="card-img-top img-fluid rounded-top" alt="BPH">
+            <div class="card-body bg-dark">
+              <h5 class="fw-bold">Badan Pengurus Harian (BPH)</h5>
+              <p>Koordinator utama kegiatan dan administrasi organisasi HMJK STIAMI.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="card card-clickable h-100 shadow-sm" data-bs-toggle="collapse" data-bs-target="#divisiCollapse">
+            <img src="https://wallpapercave.com/wp/wp5194575.jpg" class="card-img-top img-fluid rounded-top"
+              alt="Divisi">
+            <div class="card-body bg-dark">
+              <h5 class="fw-bold">Divisi</h5>
+              <p>Unit pelaksana kegiatan bidang tertentu dalam organisasi HMJK STIAMI.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Anggota BPH -->
+      <div class="collapse mt-4" id="bphCollapse">
+        <div class="bg-dark rounded p-4 shadow-sm" data-aos="fade-up">
+          <h5 class="fw-bold text-center mb-4">Anggota Badan Pengurus Harian</h5>
+          <div class="row justify-content-center">
+            <div class="col-md-4 mb-4" data-aos="zoom-in">
+              <div class="card h-100 shadow-sm">
+                <img src="sekretaris.jpg" class="card-img-top" alt="Sekretaris 1">
+                <div class="card-body">
+                  <h6 class="fw-bold">Sekretaris</h6>
+                  <p>Mengelola administrasi, surat-menyurat, dan dokumentasi kegiatan organisasi.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="100">
+              <div class="card h-100 shadow-sm">
+                <img src="bph.png" class="card-img-top" alt="Bendahara">
+                <div class="card-body">
+                  <h6 class="fw-bold">Ketum dan Waketum</h6>
+                  <p>Mengelola, Mengatur dan Memimpin Organisasi HMJK STIAMI.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="200">
+              <div class="card h-100 shadow-sm">
+                <img src="bendahara.jpg" class="card-img-top" alt="Koordinator Internal">
+                <div class="card-body">
+                  <h6 class="fw-bold">Bendahara</h6>
+                  <p>Mengelola keuangan organisasi serta membuat laporan anggaran secara rutin.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Anggota Divisi -->
+      <div class="collapse mt-4" id="divisiCollapse">
+        <div class="bg-dark rounded p-4 shadow-sm" data-aos="fade-up">
+          <h5 class="fw-bold text-center mb-4">Anggota Divisi</h5>
+          <div class="row justify-content-center">
+            <div class="col-md-4 mb-4" data-aos="zoom-in">
+              <div class="card h-100 shadow-sm">
+                <img src="mm.png" class="card-img-top" alt="Divisi Multimedia">
+                <div class="card-body">
+                  <h6 class="fw-bold">Divisi Multimedia</h6>
+                  <p>Bertanggung jawab atas pembuatan konten visual, desain, dan dokumentasi kegiatan.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="100">
+              <div class="card h-100 shadow-sm">
+                <img src="humas.png" class="card-img-top" alt="Divisi Humas">
+                <div class="card-body">
+                  <h6 class="fw-bold">Divisi Humas</h6>
+                  <p>Membangun hubungan eksternal organisasi dengan mitra, alumni, dan media.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="200">
+              <div class="card h-100 shadow-sm">
+                <img src="psdm.png" class="card-img-top" alt="Divisi Event">
+                <div class="card-body">
+                  <h6 class="fw-bold">Divisi PSDM</h6>
+                  <p>Merancang dan menyelenggarakan acara internal maupun eksternal HMJK STIAMI.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="300">
+              <div class="card h-100 shadow-sm">
+                <img src="ekraf.png" class="card-img-top" alt="Divisi Publikasi">
+                <div class="card-body">
+                  <h6 class="fw-bold">Divisi Ekraf</h6>
+                  <p>Mengelola informasi publik, media sosial, dan publikasi kegiatan organisasi.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Kegiatan -->
+  <section id="kegiatan" class="section-padding text-center bg-dark text-light py-5">
+    <div class="container">
+      <h2 data-aos="zoom-in" class="fw-bold mb-3">Kegiatan dan Program</h2>
+      <p class="text-light mb-5" data-aos="fade-up">Our Program</p>
+
+      <!-- ========= DIVISI MULTIMEDIA ========= -->
+      <h4 class="fw-bold mb-4 mt-2 text-warning" data-aos="fade-right">Divisi Multimedia</h4>
+      <div class="scroll-wrapper" data-aos="zoom-in">
+        <div class="scroll-track">
+          <!-- konten asli -->
+          <div class="card kartu"><img src="ainunnisa.jpg" alt="Desain Grafis">
+            <h6>Desain Grafis</h6>
+            <p>Membuat desain publikasi kegiatan HMJK menggunakan software grafis profesional.</p>
+          </div>
+          <div class="card kartu"><img src="ariel.jpg" alt="Videografi">
+            <h6>Videografi</h6>
+            <p>Mengabadikan momen kegiatan melalui dokumentasi video yang kreatif dan menarik.</p>
+          </div>
+          <div class="card kartu"><img src="astrid.jpg" alt="Fotografi">
+            <h6>Fotografi</h6>
+            <p>Mengambil gambar kegiatan untuk keperluan publikasi dan dokumentasi HMJK.</p>
+          </div>
+          <div class="card kartu"><img src="azzam.jpg" alt="Editing Video">
+            <h6>Editing Video</h6>
+            <p>Mengolah hasil dokumentasi menjadi video yang siap tayang di media sosial HMJK.</p>
+          </div>
+          <div class="card kartu"><img src="bintang.jpg" alt="Social Media">
+            <h6>Social Media</h6>
+            <p>Mengelola konten visual di platform seperti Instagram, TikTok, dan YouTube HMJK.</p>
+          </div>
+          <div class="card kartu"><img src="daffa.jpg" alt="Social Media">
+            <h6>Social Media</h6>
+            <p>Mengelola konten visual di platform seperti Instagram, TikTok, dan YouTube HMJK.</p>
+          </div>
+          <div class="card kartu"><img src="delia.jpg" alt="Social Media">
+            <h6>Social Media</h6>
+            <p>Mengelola konten visual di platform seperti Instagram, TikTok, dan YouTube HMJK.</p>
+          </div>
+          <div class="card kartu"><img src="fajra.jpg" alt="Social Media">
+            <h6>Social Media</h6>
+            <p>Mengelola konten visual di platform seperti Instagram, TikTok, dan YouTube HMJK.</p>
+          </div>
+          <div class="card kartu"><img src="naila.jpg" alt="Social Media">
+            <h6>Social Media</h6>
+            <p>Mengelola konten visual di platform seperti Instagram, TikTok, dan YouTube HMJK.</p>
+          </div>
+          <div class="card kartu"><img src="rayhan.jpg" alt="Social Media">
+            <h6>Social Media</h6>
+            <p>Mengelola konten visual di platform seperti Instagram, TikTok, dan YouTube HMJK.</p>
+          </div>
+          <div class="card kartu"><img src="zakiyah.jpg" alt="Social Media">
+            <h6>Social Media</h6>
+            <p>Mengelola konten visual di platform seperti Instagram, TikTok, dan YouTube HMJK.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========= DIVISI HUMAS ========= -->
+      <h4 class="fw-bold mb-4 mt-5 text-warning" data-aos="fade-right">Divisi Humas</h4>
+      <div class="scroll-wrapper" data-aos="zoom-in">
+        <div class="scroll-track">
+          <div class="card kartu"><img src="ailsa.jpg" alt="Relasi Mitra">
+            <h6>Relasi Mitra</h6>
+            <p>Menjalin hubungan dengan organisasi lain untuk memperluas jejaring HMJK.</p>
+          </div>
+          <div class="card kartu"><img src="amalia.jpg" alt="Media Partner">
+            <h6>Media Partner</h6>
+            <p>Menjalin kerja sama publikasi kegiatan dengan berbagai media partner kampus.</p>
+          </div>
+          <div class="card kartu"><img src="eka.jpg" alt="Kunjungan Eksternal">
+            <h6>Kunjungan Eksternal</h6>
+            <p>Melaksanakan kunjungan ke lembaga atau instansi untuk memperkuat jaringan komunikasi.</p>
+          </div>
+          <div class="card kartu"><img src="haekal.jpg" alt="Kunjungan Eksternal">
+            <h6>Kunjungan Eksternal</h6>
+            <p>Melaksanakan kunjungan ke lembaga atau instansi untuk memperkuat jaringan komunikasi.</p>
+          </div>
+          <div class="card kartu"><img src="katarina.jpg" alt="Kunjungan Eksternal">
+            <h6>Kunjungan Eksternal</h6>
+            <p>Melaksanakan kunjungan ke lembaga atau instansi untuk memperkuat jaringan komunikasi.</p>
+          </div>
+          <div class="card kartu"><img src="kristin.jpg" alt="Kunjungan Eksternal">
+            <h6>Kunjungan Eksternal</h6>
+            <p>Melaksanakan kunjungan ke lembaga atau instansi untuk memperkuat jaringan komunikasi.</p>
+          </div>
+          <div class="card kartu"><img src="m.naufal.jpg" alt="Kunjungan Eksternal">
+            <h6>Kunjungan Eksternal</h6>
+            <p>Melaksanakan kunjungan ke lembaga atau instansi untuk memperkuat jaringan komunikasi.</p>
+          </div>
+          <div class="card kartu"><img src="meta.jpg" alt="Kunjungan Eksternal">
+            <h6>Kunjungan Eksternal</h6>
+            <p>Melaksanakan kunjungan ke lembaga atau instansi untuk memperkuat jaringan komunikasi.</p>
+          </div>
+          <div class="card kartu"><img src="nadine.jpg" alt="Kunjungan Eksternal">
+            <h6>Kunjungan Eksternal</h6>
+            <p>Melaksanakan kunjungan ke lembaga atau instansi untuk memperkuat jaringan komunikasi.</p>
+          </div>
+          <div class="card kartu"><img src="nofal.jpg" alt="Kunjungan Eksternal">
+            <h6>Kunjungan Eksternal</h6>
+            <p>Melaksanakan kunjungan ke lembaga atau instansi untuk memperkuat jaringan komunikasi.</p>
+          </div>
+          <div class="card kartu"><img src="rahmadini.jpg" alt="Kunjungan Eksternal">
+            <h6>Kunjungan Eksternal</h6>
+            <p>Melaksanakan kunjungan ke lembaga atau instansi untuk memperkuat jaringan komunikasi.</p>
+          </div>
+          <div class="card kartu"><img src="rendy.jpg" alt="Kunjungan Eksternal">
+            <h6>Kunjungan Eksternal</h6>
+            <p>Melaksanakan kunjungan ke lembaga atau instansi untuk memperkuat jaringan komunikasi.</p>
+          </div>
+          <div class="card kartu"><img src="setiawan.jpg" alt="Kunjungan Eksternal">
+            <h6>Kunjungan Eksternal</h6>
+            <p>Melaksanakan kunjungan ke lembaga atau instansi untuk memperkuat jaringan komunikasi.</p>
+          </div>
+          <div class="card kartu"><img src="syafira.jpg" alt="Kunjungan Eksternal">
+            <h6>Kunjungan Eksternal</h6>
+            <p>Melaksanakan kunjungan ke lembaga atau instansi untuk memperkuat jaringan komunikasi.</p>
+          </div>
+          <div class="card kartu"><img src="syifa.jpg" alt="Kunjungan Eksternal">
+            <h6>Kunjungan Eksternal</h6>
+            <p>Melaksanakan kunjungan ke lembaga atau instansi untuk memperkuat jaringan komunikasi.</p>
+          </div>
+          <div class="card kartu"><img src="zeta.jpg" alt="Kunjungan Eksternal">
+            <h6>Kunjungan Eksternal</h6>
+            <p>Melaksanakan kunjungan ke lembaga atau instansi untuk memperkuat jaringan komunikasi.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========= DIVISI PSDM ========= -->
+      <h4 class="fw-bold mb-4 mt-5 text-warning" data-aos="fade-right">Divisi Psdm</h4>
+      <div class="scroll-wrapper" data-aos="zoom-in">
+        <div class="scroll-track">
+          <div class="card kartu"><img src="alifah.jpg" alt="Seminar">
+            <h6>Seminar</h6>
+            <p>Menyelenggarakan seminar komunikasi dan pengembangan diri bagi mahasiswa.</p>
+          </div>
+          <div class="card kartu"><img src="andien.jpg" alt="Workshop">
+            <h6>Workshop</h6>
+            <p>Membekali mahasiswa dengan keterampilan praktis melalui kegiatan pelatihan.</p>
+          </div>
+          <div class="card kartu"><img src="arjun.jpg" alt="Event Kampus">
+            <h6>Event Kampus</h6>
+            <p>Mengorganisir kegiatan internal seperti lomba, pameran, dan malam keakraban.</p>
+          </div>
+          <div class="card kartu"><img src="choirun.jpg" alt="Event Kampus">
+            <h6>Event Kampus</h6>
+            <p>Mengorganisir kegiatan internal seperti lomba, pameran, dan malam keakraban.</p>
+          </div>
+          <div class="card kartu"><img src="dayat.jpg" alt="Event Kampus">
+            <h6>Event Kampus</h6>
+            <p>Mengorganisir kegiatan internal seperti lomba, pameran, dan malam keakraban.</p>
+          </div>
+          <div class="card kartu"><img src="dio.jpg" alt="Event Kampus">
+            <h6>Event Kampus</h6>
+            <p>Mengorganisir kegiatan internal seperti lomba, pameran, dan malam keakraban.</p>
+          </div>
+          <div class="card kartu"><img src="friesca.jpg" alt="Event Kampus">
+            <h6>Event Kampus</h6>
+            <p>Mengorganisir kegiatan internal seperti lomba, pameran, dan malam keakraban.</p>
+          </div>
+          <div class="card kartu"><img src="haidar.jpg" alt="Event Kampus">
+            <h6>Event Kampus</h6>
+            <p>Mengorganisir kegiatan internal seperti lomba, pameran, dan malam keakraban.</p>
+          </div>
+          <div class="card kartu"><img src="nandita.jpg" alt="Event Kampus">
+            <h6>Event Kampus</h6>
+            <p>Mengorganisir kegiatan internal seperti lomba, pameran, dan malam keakraban.</p>
+          </div>
+          <div class="card kartu"><img src="nur.jpg" alt="Event Kampus">
+            <h6>Event Kampus</h6>
+            <p>Mengorganisir kegiatan internal seperti lomba, pameran, dan malam keakraban.</p>
+          </div>
+          <div class="card kartu"><img src="rahima.jpg" alt="Event Kampus">
+            <h6>Event Kampus</h6>
+            <p>Mengorganisir kegiatan internal seperti lomba, pameran, dan malam keakraban.</p>
+          </div>
+          <div class="card kartu"><img src="sherly.jpg" alt="Event Kampus">
+            <h6>Event Kampus</h6>
+            <p>Mengorganisir kegiatan internal seperti lomba, pameran, dan malam keakraban.</p>
+          </div>
+          <div class="card kartu"><img src="tiara.jpg" alt="Event Kampus">
+            <h6>Event Kampus</h6>
+            <p>Mengorganisir kegiatan internal seperti lomba, pameran, dan malam keakraban.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========= DIVISI EKRAF ========= -->
+      <h4 class="fw-bold mb-4 mt-5 text-warning" data-aos="fade-right">Divisi Ekonomi Kreatif</h4>
+      <div class="scroll-wrapper" data-aos="zoom-in">
+        <div class="scroll-track">
+          <div class="card kartu"><img src="almira.jpg" alt="Publikasi Kegiatan">
+            <h6>Publikasi Kegiatan</h6>
+            <p>Menangani penyebaran informasi kegiatan melalui media sosial dan website.</p>
+          </div>
+          <div class="card kartu"><img src="damayanti.jpg" alt="Press Release">
+            <h6>Press Release</h6>
+            <p>Menyusun berita resmi tentang kegiatan HMJK untuk disebarluaskan secara profesional.</p>
+          </div>
+          <div class="card kartu"><img src="dandis.jpg" alt="Media Monitoring">
+            <h6>Media Monitoring</h6>
+            <p>Melakukan pemantauan dan evaluasi efektivitas publikasi di berbagai platform.</p>
+          </div>
+          <div class="card kartu"><img src="diki.jpg" alt="Media Monitoring">
+            <h6>Media Monitoring</h6>
+            <p>Melakukan pemantauan dan evaluasi efektivitas publikasi di berbagai platform.</p>
+          </div>
+          <div class="card kartu"><img src="nida.jpg" alt="Media Monitoring">
+            <h6>Media Monitoring</h6>
+            <p>Melakukan pemantauan dan evaluasi efektivitas publikasi di berbagai platform.</p>
+          </div>
+          <div class="card kartu"><img src="novia.jpg" alt="Media Monitoring">
+            <h6>Media Monitoring</h6>
+            <p>Melakukan pemantauan dan evaluasi efektivitas publikasi di berbagai platform.</p>
+          </div>
+          <div class="card kartu"><img src="rifqi.jpg" alt="Media Monitoring">
+            <h6>Media Monitoring</h6>
+            <p>Melakukan pemantauan dan evaluasi efektivitas publikasi di berbagai platform.</p>
+          </div>
+          <div class="card kartu"><img src="risa.jpg" alt="Media Monitoring">
+            <h6>Media Monitoring</h6>
+            <p>Melakukan pemantauan dan evaluasi efektivitas publikasi di berbagai platform.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Activity (dipindah ke bawah Divisi) -->
+  <section id="ourActivity" class="py-5" style="background: linear-gradient(180deg, #0a0f2c, #0f172a, #101820);">
+    <div class="container" data-aos="fade-up">
+      <h2 class="fw-bold mb-3 text-center text-light">Our Activity</h2>
+
+      <div id="activityCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <!-- Slide 1 -->
+          <div class="carousel-item active">
+            <div class="row g-4 mb-3">
+              <div class="col-md-6 col-lg-3">
+                <div class="ratio ratio-16x9 rounded shadow-sm">
+                  <iframe src="https://www.youtube.com/embed/ysz5S6PUM-U" allowfullscreen></iframe>
+                </div>
+              </div>
+              <div class="col-md-6 col-lg-3">
+                <div class="ratio ratio-16x9 rounded shadow-sm">
+                  <iframe src="https://www.youtube.com/embed/tgbNymZ7vqY" allowfullscreen></iframe>
+                </div>
+              </div>
+              <div class="col-md-6 col-lg-3">
+                <div class="ratio ratio-16x9 rounded shadow-sm">
+                  <iframe src="https://www.youtube.com/embed/ysz5S6PUM-U" allowfullscreen></iframe>
+                </div>
+              </div>
+              <div class="col-md-6 col-lg-3">
+                <div class="ratio ratio-16x9 rounded shadow-sm">
+                  <iframe src="https://www.youtube.com/embed/tgbNymZ7vqY" allowfullscreen></iframe>
+                </div>
+              </div>
+            </div>
+            <div class="row g-4">
+              <div class="col-md-6 col-lg-3">
+                <div class="ratio ratio-16x9 rounded shadow-sm">
+                  <iframe src="https://www.youtube.com/embed/ysz5S6PUM-U" allowfullscreen></iframe>
+                </div>
+              </div>
+              <div class="col-md-6 col-lg-3">
+                <div class="ratio ratio-16x9 rounded shadow-sm">
+                  <iframe src="https://www.youtube.com/embed/tgbNymZ7vqY" allowfullscreen></iframe>
+                </div>
+              </div>
+              <div class="col-md-6 col-lg-3">
+                <div class="ratio ratio-16x9 rounded shadow-sm">
+                  <iframe src="https://www.youtube.com/embed/ysz5S6PUM-U" allowfullscreen></iframe>
+                </div>
+              </div>
+              <div class="col-md-6 col-lg-3">
+                <div class="ratio ratio-16x9 rounded shadow-sm">
+                  <iframe src="https://www.youtube.com/embed/tgbNymZ7vqY" allowfullscreen></iframe>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="carousel-item">
+            <div class="row g-4 mb-3">
+              <div class="col-md-6 col-lg-3">
+                <div class="ratio ratio-16x9 rounded shadow-sm">
+                  <iframe src="https://www.youtube.com/embed/jNQXAC9IVRw" allowfullscreen></iframe>
+                </div>
+              </div>
+              <div class="col-md-6 col-lg-3">
+                <div class="ratio ratio-16x9 rounded shadow-sm">
+                  <iframe src="https://www.youtube.com/embed/aqz-KE-bpKQ" allowfullscreen></iframe>
+                </div>
+              </div>
+              <div class="col-md-6 col-lg-3">
+                <div class="ratio ratio-16x9 rounded shadow-sm">
+                  <iframe src="https://www.youtube.com/embed/jNQXAC9IVRw" allowfullscreen></iframe>
+                </div>
+              </div>
+              <div class="col-md-6 col-lg-3">
+                <div class="ratio ratio-16x9 rounded shadow-sm">
+                  <iframe src="https://www.youtube.com/embed/aqz-KE-bpKQ" allowfullscreen></iframe>
+                </div>
+              </div>
+            </div>
+            <div class="row g-4">
+              <div class="col-md-6 col-lg-3">
+                <div class="ratio ratio-16x9 rounded shadow-sm">
+                  <iframe src="https://www.youtube.com/embed/jNQXAC9IVRw" allowfullscreen></iframe>
+                </div>
+              </div>
+              <div class="col-md-6 col-lg-3">
+                <div class="ratio ratio-16x9 rounded shadow-sm">
+                  <iframe src="https://www.youtube.com/embed/aqz-KE-bpKQ" allowfullscreen></iframe>
+                </div>
+              </div>
+              <div class="col-md-6 col-lg-3">
+                <div class="ratio ratio-16x9 rounded shadow-sm">
+                  <iframe src="https://www.youtube.com/embed/jNQXAC9IVRw" allowfullscreen></iframe>
+                </div>
+              </div>
+              <div class="col-md-6 col-lg-3">
+                <div class="ratio ratio-16x9 rounded shadow-sm">
+                  <iframe src="https://www.youtube.com/embed/aqz-KE-bpKQ" allowfullscreen></iframe>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tombol Carousel -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#activityCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon bg-dark rounded-circle p-2"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#activityCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon bg-dark rounded-circle p-2"></span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Artikel -->
+  <section id="artikel" class="py-5 bg-light">
+    <div class="container" data-aos="fade-up">
+      <h2 class="fw-bold mb-3 text-center">Artikel</h2>
+      <p class="text-center text-light mb-5">Kumpulan artikel menarik dari HMJK STIAMI</p>
+
+      <div class="row g-4">
+
+        <!-- Artikel 1 -->
+        <div class="col-md-4 col-lg-3" data-aos="zoom-in">
+          <a href="#" class="text-decoration-none text-dark">
+            <div class="card artikel-card border-0 shadow-sm h-100">
+              <div class="artikel-img-wrapper">
+                <img src="https://via.placeholder.com/400x250?text=Komunikasi+Efektif" class="card-img-top"
+                  alt="Artikel 1">
+              </div>
+              <div class="card-body">
+                <h6 class="fw-bold">Pentingnya Komunikasi Efektif</h6>
+                <p class="text-light small">Pelajari bagaimana komunikasi efektif dapat meningkatkan kolaborasi tim dan
+                  hasil kerja.</p>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Artikel 2 -->
+        <div class="col-md-4 col-lg-3" data-aos="zoom-in" data-aos-delay="100">
+          <a href="#" class="text-decoration-none text-dark">
+            <div class="card artikel-card border-0 shadow-sm h-100">
+              <div class="artikel-img-wrapper">
+                <img src="https://via.placeholder.com/400x250?text=Public+Speaking" class="card-img-top"
+                  alt="Artikel 2">
+              </div>
+              <div class="card-body">
+                <h6 class="fw-bold">Public Speaking untuk Mahasiswa</h6>
+                <p class="text-light small">Tips dan trik berbicara di depan umum agar lebih percaya diri dan persuasif.
+                </p>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Artikel 3 -->
+        <div class="col-md-4 col-lg-3" data-aos="zoom-in" data-aos-delay="200">
+          <a href="#" class="text-decoration-none text-dark">
+            <div class="card artikel-card border-0 shadow-sm h-100">
+              <div class="artikel-img-wrapper">
+                <img src="https://via.placeholder.com/400x250?text=Branding+Organisasi" class="card-img-top"
+                  alt="Artikel 3">
+              </div>
+              <div class="card-body">
+                <h6 class="fw-bold">Strategi Branding Organisasi</h6>
+                <p class="text-light small">Kenali langkah-langkah membangun citra positif organisasi di mata publik.
+                </p>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Artikel 4 -->
+        <div class="col-md-4 col-lg-3" data-aos="zoom-in" data-aos-delay="300">
+          <a href="#" class="text-decoration-none text-dark">
+            <div class="card artikel-card border-0 shadow-sm h-100">
+              <div class="artikel-img-wrapper">
+                <img src="https://via.placeholder.com/400x250?text=Media+Sosial" class="card-img-top" alt="Artikel 4">
+              </div>
+              <div class="card-body">
+                <h6 class="fw-bold">Media Sosial Sebagai Alat Komunikasi</h6>
+                <p class="text-light small">Peran media sosial dalam membangun interaksi dan penyebaran informasi.</p>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Artikel tambahan -->
+        <div class="col-md-4 col-lg-3" data-aos="zoom-in" data-aos-delay="400">
+          <a href="#" class="text-decoration-none text-dark">
+            <div class="card artikel-card border-0 shadow-sm h-100">
+              <div class="artikel-img-wrapper">
+                <img src="https://via.placeholder.com/400x250?text=Komunikasi+Digital" class="card-img-top"
+                  alt="Artikel 5">
+              </div>
+              <div class="card-body">
+                <h6 class="fw-bold">Teknologi dan Komunikasi Digital</h6>
+                <p class="text-light small">Dampak kemajuan teknologi terhadap cara kita berkomunikasi setiap hari.</p>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="col-md-4 col-lg-3" data-aos="zoom-in" data-aos-delay="500">
+          <a href="#" class="text-decoration-none text-dark">
+            <div class="card artikel-card border-0 shadow-sm h-100">
+              <div class="artikel-img-wrapper">
+                <img src="https://via.placeholder.com/400x250?text=Kreativitas+Penyiaran" class="card-img-top"
+                  alt="Artikel 6">
+              </div>
+              <div class="card-body">
+                <h6 class="fw-bold">Kreativitas dalam Penyiaran</h6>
+                <p class="text-light small">Bagaimana ide kreatif bisa menjadikan program penyiaran lebih menarik.</p>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="col-md-4 col-lg-3" data-aos="zoom-in" data-aos-delay="600">
+          <a href="#" class="text-decoration-none text-dark">
+            <div class="card artikel-card border-0 shadow-sm h-100">
+              <div class="artikel-img-wrapper">
+                <img src="https://via.placeholder.com/400x250?text=Etika+Komunikasi" class="card-img-top"
+                  alt="Artikel 7">
+              </div>
+              <div class="card-body">
+                <h6 class="fw-bold">Etika Komunikasi Modern</h6>
+                <p class="text-light small">Menjadi komunikator yang profesional dan beretika di era digital.</p>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="col-md-4 col-lg-3" data-aos="zoom-in" data-aos-delay="700">
+          <a href="#" class="text-decoration-none text-dark">
+            <div class="card artikel-card border-0 shadow-sm h-100">
+              <div class="artikel-img-wrapper">
+                <img src="https://via.placeholder.com/400x250?text=Komunikasi+Visual" class="card-img-top"
+                  alt="Artikel 8">
+              </div>
+              <div class="card-body">
+                <h6 class="fw-bold">Komunikasi Visual dan Desain</h6>
+                <p class="text-light small">Visual yang kuat bisa menyampaikan pesan lebih efektif daripada kata-kata.
+                </p>
+              </div>
+            </div>
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- CSS Khusus Artikel -->
+    <style>
+      .artikel-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .artikel-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+      }
+
+      .artikel-img-wrapper {
+        overflow: hidden;
+        border-top-left-radius: 0.5rem;
+        border-top-right-radius: 0.5rem;
+      }
+
+      .artikel-img-wrapper img {
+        transition: transform 0.4s ease;
+        height: 180px;
+        object-fit: cover;
+        width: 100%;
+      }
+
+      .artikel-card:hover img {
+        transform: scale(1.1);
+      }
+    </style>
+  </section>
+
+
+  <!-- Kontak -->
+  <section id="kontak" class="section-padding bg-light-gray">
+    <div class="container">
+      <h2 class="text-center" data-aos="zoom-in">Kontak & Informasi</h2>
+      <div class="row mt-4">
+        <div class="col-md-6" data-aos="fade-up">
+          <h5><i class="bi bi-geo-alt-fill text-primary"></i> Alamat</h5>
+          <p>Institut STIAMI, Jl. Pangkalan Asem No.55, RT.5/RW.7, Galur, Kota Jakarta Pusat</p>
+
+          <p>
+            <i class="bi bi-telephone"></i>
+            <a href="tel:+62214213380" class="text-decoration-none text-light">(021) 4213380</a>
+          </p>
+
+          <p>
+            <i class="bi bi-globe"></i>
+            <a href="https://stiami.ac.id" target="_blank" class="text-decoration-none text-light">stiami.ac.id</a>
+          </p>
+
+          <p>
+            <i class="bi bi-instagram"></i>
+            <a href="https://www.instagram.com/hmj_komunikasi" target="_blank"
+              class="text-decoration-none text-light">@hmj_komunikasi</a>
+          </p>
+        </div>
+
+        <div class="col-md-6" data-aos="fade-up">
+          <h5><i class="bi bi-envelope-paper-fill text-success"></i> Kirim Pesan</h5>
+          <form id="contactForm" class="mt-3 p-3 rounded shadow-sm" style="font-size: 0.9rem;">
+            <div class="row g-2">
+              <!-- Nama & Email sejajar -->
+              <div class="col-md-6">
+                <input type="text" class="form-control form-control-sm" id="nama" name="nama" required
+                  placeholder="Nama *">
+              </div>
+              <div class="col-md-6">
+                <input type="email" class="form-control form-control-sm" id="email" name="email" required
+                  placeholder="Email *">
+              </div>
+
+              <!-- No HP & Subject sejajar -->
+              <div class="col-md-6">
+                <input type="tel" class="form-control form-control-sm" id="nohp" name="nohp" required
+                  placeholder="No. Handphone *">
+              </div>
+              <div class="col-md-6">
+                <input type="text" class="form-control form-control-sm" id="subject" name="subject"
+                  placeholder="Subject (opsional)">
+              </div>
+
+              <!-- Comment -->
+              <div class="col-12">
+                <textarea class="form-control form-control-sm" id="comment" name="comment" rows="2"
+                  placeholder="Komentar (opsional)"></textarea>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-custom btn-sm w-100 mt-2">Kirim Pesan</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-center">
+    <div class="container">
+      <p>&copy; 2025 Himpunan Mahasiswa Manajemen Komunikasi - Institut STIAMI</p>
+    </div>
+  </footer>
+
+  <!-- Tombol Scroll ke Atas -->
+  <button id="btnScrollTop" title="Kembali ke atas">
+    <i class="bi bi-arrow-up"></i>
+  </button>
+
+  <!-- JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- JS PUNYA AOS KE 1 -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <!-- JS PUNYA AOS KE 2 -->
+  <script>
+    AOS.init();
+    // Tombol Scroll ke Atas
+    const btnScrollTop = document.getElementById("btnScrollTop");
+
+    window.addEventListener("scroll", () => {
+      if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+        btnScrollTop.classList.add("show");
+      } else {
+        btnScrollTop.classList.remove("show");
+      }
+    });
+
+    btnScrollTop.addEventListener("click", () => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    });
+    document.querySelectorAll('.collapse').forEach(collapse => {
+      collapse.addEventListener('shown.bs.collapse', function () {
+        collapse.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+    /* Tombol Scroll ke Atas */
+    // scroll manual support (drag / swipe)
+    document.querySelectorAll('.scroll-wrapper').forEach(wrapper => {
+      let isDown = false;
+      let startX, scrollLeft;
+
+      wrapper.addEventListener('mousedown', e => {
+        isDown = true;
+        startX = e.pageX - wrapper.offsetLeft;
+        scrollLeft = wrapper.scrollLeft;
+        wrapper.classList.add('active');
+      });
+      wrapper.addEventListener('mouseleave', () => isDown = false);
+      wrapper.addEventListener('mouseup', () => isDown = false);
+      wrapper.addEventListener('mousemove', e => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - wrapper.offsetLeft;
+        const walk = (x - startX) * 2;
+        wrapper.scrollLeft = scrollLeft - walk;
+      });
+
+      // support touch
+      wrapper.addEventListener('touchstart', e => {
+        startX = e.touches[0].pageX;
+        scrollLeft = wrapper.scrollLeft;
+      });
+      wrapper.addEventListener('touchmove', e => {
+        const x = e.touches[0].pageX;
+        const walk = (x - startX) * 2;
+        wrapper.scrollLeft = scrollLeft - walk;
+      });
+    });
+  </script>
+  <script>
+    document.querySelectorAll('.scroll-track').forEach(track => {
+
+      const wrapper = track.parentElement;
+
+      // Tunggu semua gambar selesai load
+      const images = track.querySelectorAll("img");
+      let loaded = 0;
+
+      function init() {
+
+        // Clone isi sekali saja
+        track.innerHTML += track.innerHTML;
+
+        let speed = 0.5; // ubah kecepatan di sini
+        let position = 0;
+        let isPaused = false;
+
+        const totalWidth = track.scrollWidth / 2;
+
+        function animate() {
+          if (!isPaused) {
+            position -= speed;
+          }
+
+          if (Math.abs(position) >= totalWidth) {
+            position = 0;
+          }
+
+          track.style.transform = `translate3d(${position}px,0,0)`;
+
+          requestAnimationFrame(animate);
+        }
+
+        animate();
+
+        wrapper.addEventListener("mouseenter", () => isPaused = true);
+        wrapper.addEventListener("mouseleave", () => isPaused = false);
+      }
+
+      if (images.length > 0) {
+        images.forEach(img => {
+          if (img.complete) {
+            loaded++;
+          } else {
+            img.onload = () => {
+              loaded++;
+              if (loaded === images.length) init();
+            };
+          }
+        });
+
+        if (loaded === images.length) init();
+      } else {
+        init();
+      }
+
+    });
+  </script>
+</body>
+
+</html>
