@@ -274,6 +274,68 @@
       color: #fff;
     }
 
+/* CARD */
+.card-clickable {
+  cursor: pointer;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 220px;
+  transition: 0.3s ease;
+  animation: pulse 2.5s infinite ease-in-out;
+  text-align: center;
+}
+
+/* Denyut halus */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  }
+}
+
+/* Hover fokus */
+.card-clickable:hover {
+  animation: none;
+  transform: scale(1.1);
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 25px 50px rgba(0,0,0,0.7);
+}
+
+/* Judul */
+.card-title {
+  font-size: 32px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  transition: 0.3s ease;
+}
+
+/* CTA */
+.card-cta {
+  font-size: 14px;
+  opacity: 0.6;
+  margin-top: 10px;
+  transition: 0.3s ease;
+}
+
+/* Saat hover CTA lebih jelas */
+.card-clickable:hover .card-cta {
+  opacity: 1;
+  letter-spacing: 1px;
+}
+
     /* Responsif */
     @media (max-width: 768px) {
       .hero h1 {
@@ -330,7 +392,7 @@
   <section id="home" class="hero">
     <div class="container" data-aos="zoom-in">
       <h1>Selamat Datang di Himpunan Mahasiswa Jurusan Komunikasi</h1>
-      <p>Kabinet ANURAGA - Tumbuh dan Berjaya Bersama</p>
+      <p style="color: gold;"><b>Kabinet ANURAGA - Tumbuh dan Berjaya Bersama</b></p>
     </div>
   </section>
 
@@ -407,28 +469,18 @@
       <!-- BPH dan Divisi -->
       <div class="row text-center justify-content-center">
         <div class="col-md-4 mb-4" data-aos="fade-up">
-          <div class="card card-clickable h-100 shadow-sm" data-bs-toggle="collapse" data-bs-target="#bphCollapse">
-            <img
-              src="https://img.freepik.com/vektoren-premium/bph-logo-bph-buchstaben-bph-brief-logo-design-initialen-bph-logo-mit-kreis-und-grossbuchstaben-monogramm-logo-bph-typographie-fuer-technologie-geschaeft-und-immobilien-marke_229120-64222.jpg"
-              class="card-img-top img-fluid rounded-top" alt="BPH">
-            <div class="card-body bg-dark">
-              <h5 class="fw-bold">Badan Pengurus Harian (BPH)</h5>
-              <p>Koordinator utama kegiatan dan administrasi organisasi HMJK STIAMI.</p>
-            </div>
-          </div>
-        </div>
+      <div class="card-clickable" data-bs-toggle="collapse" data-bs-target="#bphCollapse">
+        <div class="card-title">BPH</div>
+        <div class="card-cta">Klik untuk melihat selengkapnya →</div>
+      </div>
+    </div>
 
         <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100">
-          <div class="card card-clickable h-100 shadow-sm" data-bs-toggle="collapse" data-bs-target="#divisiCollapse">
-            <img
-              src="https://hotmart.s3.amazonaws.com/product_pictures/573f98e3-0270-4787-a658-4c91c920b67f/LOGOS_Prancheta1copia2.png"
-              class="card-img-top img-fluid rounded-top" alt="Divisi">
-            <div class="card-body bg-dark">
-              <h5 class="fw-bold">Divisi</h5>
-              <p>Unit pelaksana kegiatan bidang tertentu dalam organisasi HMJK STIAMI.</p>
-            </div>
-          </div>
-        </div>
+      <div class="card-clickable" data-bs-toggle="collapse" data-bs-target="#divisiCollapse">
+        <div class="card-title">DIVISI</div>
+        <div class="card-cta">Klik untuk melihat selengkapnya →</div>
+      </div>
+    </div>
       </div>
 
       <!-- Anggota BPH -->
@@ -472,12 +524,12 @@
         <div class="bg-dark rounded p-4 shadow-sm" data-aos="fade-up">
           <h5 class="fw-bold text-center mb-4">Anggota Divisi</h5>
           <div class="row justify-content-center">
-            <div class="col-md-4 mb-4" data-aos="zoom-in">
+            <div class="col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="200">
               <div class="card h-100 shadow-sm">
-                <img src="foto_hmjk/mm.png" class="card-img-top" alt="Divisi Multimedia">
+                <img src="foto_hmjk/psdm.png" class="card-img-top" alt="Divisi Event">
                 <div class="card-body">
-                  <h6 class="fw-bold">Divisi Multimedia</h6>
-                  <p>Bertanggung jawab atas pembuatan konten visual, desain, dan dokumentasi kegiatan.</p>
+                  <h6 class="fw-bold">Divisi PSDM</h6>
+                  <p>Merancang dan menyelenggarakan acara internal maupun eksternal HMJK STIAMI.</p>
                 </div>
               </div>
             </div>
@@ -490,12 +542,12 @@
                 </div>
               </div>
             </div>
-            <div class="col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="200">
+            <div class="col-md-4 mb-4" data-aos="zoom-in">
               <div class="card h-100 shadow-sm">
-                <img src="foto_hmjk/psdm.png" class="card-img-top" alt="Divisi Event">
+                <img src="foto_hmjk/mm.png" class="card-img-top" alt="Divisi Multimedia">
                 <div class="card-body">
-                  <h6 class="fw-bold">Divisi PSDM</h6>
-                  <p>Merancang dan menyelenggarakan acara internal maupun eksternal HMJK STIAMI.</p>
+                  <h6 class="fw-bold">Divisi Multimedia</h6>
+                  <p>Bertanggung jawab atas pembuatan konten visual, desain, dan dokumentasi kegiatan.</p>
                 </div>
               </div>
             </div>
@@ -1318,7 +1370,18 @@
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <!-- JS PUNYA AOS KE 2 -->
   <script>
-    AOS.init();
+    document.addEventListener("DOMContentLoaded", function () {
+  AOS.init({
+    duration: 500,
+    easing: "ease-out-cubic",
+    once: false,
+    mirror: true
+  });
+});
+
+window.addEventListener("load", function () {
+  AOS.refreshHard();
+});
     // Tombol Scroll ke Atas
     const btnScrollTop = document.getElementById("btnScrollTop");
 
@@ -1424,5 +1487,4 @@
   </script>
 
 </body>
-
 </html>
