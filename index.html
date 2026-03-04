@@ -26,6 +26,7 @@
       }
 
       body {
+        background: #050810; /* warna dasar gelap */
         font-family: "Poppins", sans-serif;
         color: #333;
         scroll-behavior: smooth;
@@ -34,6 +35,51 @@
       html,
       body {
         overflow-x: hidden;
+      }
+
+     /* background animasi */
+
+      .bg-animation {
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        overflow: hidden;
+        pointer-events: none;
+        background: radial-gradient(circle at center, #0f172a 0%, #020408 100%);
+      }
+
+      .dove-bg {
+        position: absolute;
+        width: 120px;
+        height: 120px;
+        background-image: url("foto_hmjk/anuraga.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        opacity: 0.05;
+        animation: float 25s linear infinite;
+        filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.2));
+      }
+
+      @keyframes float {
+        0% {
+          transform: translateY(110vh) rotate(0deg) scale(0.8) translateX(0);
+          opacity: 0;
+        }
+        10% {
+          opacity: 0.08;
+        }
+        50% {
+          transform: translateY(50vh) rotate(180deg) scale(1) translateX(50px);
+          opacity: 0.08;
+        }
+        90% {
+          opacity: 0.08;
+        }
+        100% {
+          transform: translateY(-20vh) rotate(360deg) scale(1.2)
+            translateX(-50px);
+          opacity: 0;
+        }
       }
 
       .navbar-brand img {
@@ -177,7 +223,7 @@
       }
 
       footer {
-        background-color: var(--biru-tua);
+        background-color: black;
         color: var(--putih);
         padding: 20px 0;
       }
@@ -247,7 +293,6 @@
       #artikel,
       #kontak,
       footer {
-        background: linear-gradient(180deg, #0a0f2c, #0f172a, #101820);
         color: #f5f5f5;
       }
 
@@ -373,6 +418,8 @@
   </head>
 
   <body>
+    <div class="bg-animation" id="bgAnimation"></div>
+
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
       <div class="container">
@@ -437,7 +484,7 @@
     </section>
 
     <!-- Profil -->
-    <section id="profil" class="section-padding bg-light-gray">
+    <section id="profil" class="section-padding">
       <div class="container">
         <h2 data-aos="zoom-in" class="text-center">Profil Organisasi</h2>
         <div class="row ms-4">
@@ -500,8 +547,12 @@
             <div class="col-md-7 order-2 order-md-1">
               <h4 class="fw-bold text-warning text-center">KABINET ANURAGA</h4>
               <ul
-              class="text-start"
-                style="list-style-type: circle; padding-left: 0; line-height: 1.8"
+                class="text-start"
+                style="
+                  list-style-type: circle;
+                  padding-left: 0;
+                  line-height: 1.8;
+                "
               >
                 <li>
                   <strong>Sayap :</strong> Melambangkan kekuatan, dinamika, dan
@@ -768,7 +819,7 @@
     <!-- Anggota -->
     <section
       id="kegiatan"
-      class="section-padding text-center bg-dark text-light py-5"
+      class="section-padding text-center text-light py-5"
     >
       <div class="container">
         <h2 data-aos="zoom-in" class="fw-bold mb-3">Anggota HMJK</h2>
@@ -2192,7 +2243,7 @@
     </section>
 
     <!-- Artikel -->
-    <section id="artikel" class="py-5 bg-light">
+    <section id="artikel" class="py-5">
       <div class="container" data-aos="fade-up">
         <h2 class="fw-bold mb-3 text-center">Artikel</h2>
         <p class="text-center text-light mb-5">
@@ -2436,7 +2487,7 @@
     </section>
 
     <!-- Kontak -->
-    <section id="kontak" class="section-padding bg-light-gray">
+    <section id="kontak" class="section-padding">
       <div class="container">
         <h2 class="text-center" data-aos="zoom-in">Kontak & Informasi</h2>
         <div class="row mt-4">
@@ -2683,6 +2734,31 @@
 
         wrapper.addEventListener("mouseenter", () => (isPaused = true));
         wrapper.addEventListener("mouseleave", () => (isPaused = false));
+      });
+    </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const bgContainer = document.getElementById("bgAnimation");
+        const doveCount = 12;
+
+        for (let i = 0; i < doveCount; i++) {
+          const dove = document.createElement("div");
+          dove.classList.add("dove-bg");
+
+          const left = Math.random() * 100;
+          const size = 80 + Math.random() * 100;
+          const duration = 20 + Math.random() * 25;
+          const delay = Math.random() * 20;
+
+          dove.style.left = left + "%";
+          dove.style.width = size + "px";
+          dove.style.height = size + "px";
+          dove.style.animationDuration = duration + "s";
+          dove.style.animationDelay = "-" + delay + "s";
+
+          bgContainer.appendChild(dove);
+        }
       });
     </script>
   </body>
