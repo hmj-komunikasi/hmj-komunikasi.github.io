@@ -37,7 +37,7 @@
         overflow-x: hidden;
       }
 
-      /* background animasi 
+      /* background animasi */
 
       .bg-animation {
         position: fixed;
@@ -46,46 +46,13 @@
         overflow: hidden;
         pointer-events: none;
         background: radial-gradient(circle at center, #0f172a 0%, #020408 100%);
-      }*/
-
-      .bg-animation {
-        position: fixed;
-        inset: 0;
-        z-index: -1;
-        overflow: hidden;
-        pointer-events: none;
-
-        background-image: url("siluet.jpg");
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-
-        animation: bgMove 40s ease-in-out infinite alternate;
-      }
-
-      /* animasi gerakan background */
-      @keyframes bgMove {
-        0% {
-          background-position: 40% 50%;
-          transform: scale(1);
-        }
-
-        50% {
-          background-position: 60% 40%;
-          transform: scale(1.05);
-        }
-
-        100% {
-          background-position: 50% 60%;
-          transform: scale(1.1);
-        }
       }
 
       .dove-bg {
         position: absolute;
         width: 120px;
         height: 120px;
-        background-image: url("");
+        background-image: url("foto_hmjk/anuraga.png");
         background-size: contain;
         background-repeat: no-repeat;
         opacity: 0.05;
