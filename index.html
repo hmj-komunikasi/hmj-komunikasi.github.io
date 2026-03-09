@@ -52,9 +52,9 @@
         position: absolute;
         width: 120px;
         height: 120px;
-        background-image: url("foto_hmjk/anuraga.png");
         background-size: contain;
         background-repeat: no-repeat;
+        background-position: center;
         opacity: 0.05;
         animation: float 25s linear infinite;
         filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.2));
@@ -414,6 +414,95 @@
       .border {
         border: 1px solid #ddd !important;
       }
+
+      /*  */
+      .news-main {
+        position: relative;
+        overflow: hidden;
+        border-radius: 12px;
+      }
+
+      .news-main img {
+        width: 100%;
+        height: 420px;
+        object-fit: cover;
+        transition: 0.5s;
+      }
+
+      .news-main:hover img {
+        transform: scale(1.1);
+      }
+
+      .news-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 30px;
+        background: linear-gradient(transparent, rgba(0, 0, 0, 0.85));
+        color: white;
+      }
+
+      .news-category {
+        background: gold;
+        color: black;
+        padding: 3px 10px;
+        font-size: 12px;
+        border-radius: 20px;
+        font-weight: bold;
+      }
+
+      .news-date {
+        font-size: 12px;
+        opacity: 0.8;
+      }
+
+      .news-item {
+        display: flex;
+        gap: 15px;
+        align-items: center;
+        background: rgba(255, 255, 255, 0.05);
+        padding: 10px;
+        border-radius: 10px;
+        transition: 0.3s;
+      }
+
+      .news-item:hover {
+        transform: translateX(6px);
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      .news-item img {
+        width: 110px;
+        height: 80px;
+        object-fit: cover;
+        border-radius: 8px;
+      }
+
+      .news-item h6 {
+        margin: 5px 0;
+        color: white;
+      }
+
+      .news-list {
+        max-height: 420px; /* tinggi area artikel */
+        overflow-y: auto; /* aktifkan scroll */
+        padding-right: 5px;
+      }
+
+      /* style scrollbar supaya lebih bagus */
+      .news-list::-webkit-scrollbar {
+        width: 6px;
+      }
+
+      .news-list::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 10px;
+      }
+
+      .news-list::-webkit-scrollbar-thumb:hover {
+        background: #aaa;
+      }
     </style>
   </head>
 
@@ -424,7 +513,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
       <div class="container">
         <a class="navbar-brand" href="#home" data-aos="fade-right">
-          <img src="foto_hmjk/images.jpeg" alt="Logo HMJK" /> HMJK STIAMI
+          <img src="foto_hmjk/images.jpeg" alt="Logo HMJK" /> HMJ KOMUNIKASI
         </a>
         <button
           class="navbar-toggler"
@@ -464,8 +553,11 @@
               ></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="mailto:hmjk@stiami.ac.id"
-                ><i class="bi bi-envelope"></i
+              <a
+                class="nav-link"
+                href="https://wa.me/6283866757288"
+                target="_blank"
+                ><i class="bi bi-telephone"></i
               ></a>
             </li>
           </ul>
@@ -533,10 +625,10 @@
           </div>
           <!-- ANURAGA -->
           <div
-            class="row align-items-center mb-5 p-4 rounded shadow-sm"
+            class="row align-items-center p-4 rounded shadow-sm"
             data-aos="fade-left"
           >
-            <div class="col-md-5 text-center mb-5 order-1 order-md-2">
+            <div class="col-md-5 mb-5 text-center order-1 order-md-2">
               <img
                 src="foto_hmjk/anuraga.png"
                 style="width: 55%"
@@ -673,15 +765,14 @@
               <div class="col-md-4 mb-4" data-aos="zoom-in">
                 <div class="card h-100 shadow-sm">
                   <img
-                    src="foto_hmjk/sekretaris.jpg"
+                    src="foto_hmjk/bph.png"
                     class="card-img-top"
-                    alt="Sekretaris 1"
+                    alt="Bendahara"
                   />
                   <div class="card-body">
-                    <h6 class="fw-bold">Sekretaris</h6>
+                    <h6 class="fw-bold">Ketum dan Waketum</h6>
                     <p>
-                      Mengelola administrasi, surat-menyurat, dan dokumentasi
-                      kegiatan organisasi.
+                      Mengelola, Mengatur dan Memimpin Organisasi HMJK STIAMI.
                     </p>
                   </div>
                 </div>
@@ -693,14 +784,15 @@
               >
                 <div class="card h-100 shadow-sm">
                   <img
-                    src="foto_hmjk/bph.png"
+                    src="foto_hmjk/sekretaris.jpg"
                     class="card-img-top"
-                    alt="Bendahara"
+                    alt="Sekretaris 1"
                   />
                   <div class="card-body">
-                    <h6 class="fw-bold">Ketum dan Waketum</h6>
+                    <h6 class="fw-bold">Sekretaris</h6>
                     <p>
-                      Mengelola, Mengatur dan Memimpin Organisasi HMJK STIAMI.
+                      Mengelola administrasi, surat-menyurat, dan dokumentasi
+                      kegiatan organisasi.
                     </p>
                   </div>
                 </div>
@@ -804,8 +896,8 @@
                   <div class="card-body">
                     <h6 class="fw-bold">Divisi Ekraf</h6>
                     <p>
-                      Mengelola informasi publik, media sosial, dan publikasi
-                      kegiatan organisasi.
+                      Mengelola Produk - Produk HMJK dan dipasarkan dikalangan
+                      Mahasiswa.
                     </p>
                   </div>
                 </div>
@@ -2237,246 +2329,78 @@
 
     <!-- Artikel -->
     <section id="artikel" class="py-5">
-      <div class="container" data-aos="fade-up">
-        <h2 class="fw-bold mb-3 text-center">Artikel</h2>
-        <p class="text-center text-light mb-5">
-          Kumpulan artikel menarik dari HMJK STIAMI
+      <div class="container">
+        <h2 class="fw-bold text-center mb-4" data-aos="zoom-in">
+          Berita & Artikel HMJK
+        </h2>
+        <p class="text-center text-light mb-5" data-aos="fade-up">
+          Informasi terbaru kegiatan dan wawasan komunikasi
         </p>
 
         <div class="row g-4">
-          <!-- Artikel 1 -->
-          <div class="col-md-4 col-lg-3" data-aos="zoom-in">
-            <a href="#" class="text-decoration-none text-dark">
-              <div class="card artikel-card border-0 shadow-sm h-100">
-                <div class="artikel-img-wrapper">
-                  <img
-                    src="https://via.placeholder.com/400x250?text=Komunikasi+Efektif"
-                    class="card-img-top"
-                    alt="Artikel 1"
-                  />
-                </div>
-                <div class="card-body">
-                  <h6 class="fw-bold">Pentingnya Komunikasi Efektif</h6>
-                  <p class="text-light small">
-                    Pelajari bagaimana komunikasi efektif dapat meningkatkan
-                    kolaborasi tim dan hasil kerja.
-                  </p>
-                </div>
+          <!-- ARTIKEL UTAMA -->
+          <div class="col-lg-6" data-aos="fade-right">
+            <div class="news-main">
+              <img src="foto_hmjk/artikel3.jpg" alt="Artikel Utama" />
+
+              <div class="news-overlay">
+                <span class="news-category">Kegiatan</span>
+                <h3>HMJK STIAMI Mengadakan Kunjungan Ke Studio Trans7</h3>
+                <p>
+                  Kegiatan ini menghadirkan praktisi komunikasi untuk membahas
+                  perkembangan media digital dan strategi Komunikasi dalam dunia
+                  Televisi.
+                </p>
+                <span class="news-date">29 Juli 2025</span>
               </div>
-            </a>
+            </div>
           </div>
 
-          <!-- Artikel 2 -->
-          <div
-            class="col-md-4 col-lg-3"
-            data-aos="zoom-in"
-            data-aos-delay="100"
-          >
-            <a href="#" class="text-decoration-none text-dark">
-              <div class="card artikel-card border-0 shadow-sm h-100">
-                <div class="artikel-img-wrapper">
-                  <img
-                    src="https://via.placeholder.com/400x250?text=Public+Speaking"
-                    class="card-img-top"
-                    alt="Artikel 2"
-                  />
-                </div>
-                <div class="card-body">
-                  <h6 class="fw-bold">Public Speaking untuk Mahasiswa</h6>
-                  <p class="text-light small">
-                    Tips dan trik berbicara di depan umum agar lebih percaya
-                    diri dan persuasif.
-                  </p>
+          <!-- ARTIKEL KECIL -->
+          <div class="col-lg-6" data-aos="fade-left">
+            <div class="news-list">
+              <div class="news-item">
+                <img src="foto_hmjk/artikel2.png" />
+                <div>
+                  <span class="news-category">Bhakti Sosial</span>
+                  <h6>Peran HMJK dalam Kepedulian Terhadap Sesama</h6>
+                  <span class="news-date">1 Mei 2021</span>
                 </div>
               </div>
-            </a>
-          </div>
 
-          <!-- Artikel 3 -->
-          <div
-            class="col-md-4 col-lg-3"
-            data-aos="zoom-in"
-            data-aos-delay="200"
-          >
-            <a href="#" class="text-decoration-none text-dark">
-              <div class="card artikel-card border-0 shadow-sm h-100">
-                <div class="artikel-img-wrapper">
-                  <img
-                    src="https://via.placeholder.com/400x250?text=Branding+Organisasi"
-                    class="card-img-top"
-                    alt="Artikel 3"
-                  />
-                </div>
-                <div class="card-body">
-                  <h6 class="fw-bold">Strategi Branding Organisasi</h6>
-                  <p class="text-light small">
-                    Kenali langkah-langkah membangun citra positif organisasi di
-                    mata publik.
-                  </p>
+              <div class="news-item">
+                <img src="foto_hmjk/artikel1.png" />
+                <div>
+                  <span class="news-category">Edukasi</span>
+                  <h6>
+                    Tips Public Speaking untuk Mahasiswa Komunikasi dan
+                    berdiskusi tentang mental Health
+                  </h6>
+                  <span class="news-date">8 Des 2025</span>
                 </div>
               </div>
-            </a>
-          </div>
 
-          <!-- Artikel 4 -->
-          <div
-            class="col-md-4 col-lg-3"
-            data-aos="zoom-in"
-            data-aos-delay="300"
-          >
-            <a href="#" class="text-decoration-none text-dark">
-              <div class="card artikel-card border-0 shadow-sm h-100">
-                <div class="artikel-img-wrapper">
-                  <img
-                    src="https://via.placeholder.com/400x250?text=Media+Sosial"
-                    class="card-img-top"
-                    alt="Artikel 4"
-                  />
-                </div>
-                <div class="card-body">
-                  <h6 class="fw-bold">Media Sosial Sebagai Alat Komunikasi</h6>
-                  <p class="text-light small">
-                    Peran media sosial dalam membangun interaksi dan penyebaran
-                    informasi.
-                  </p>
+              <div class="news-item">
+                <img src="foto_hmjk/artikel4.png" />
+                <div>
+                  <span class="news-category">Studi Banding</span>
+                  <h6>Studi Banding antara HMJK dan HIMIKOM</h6>
+                  <span class="news-date">12 Mei 2025</span>
                 </div>
               </div>
-            </a>
-          </div>
 
-          <!-- Artikel tambahan -->
-          <div
-            class="col-md-4 col-lg-3"
-            data-aos="zoom-in"
-            data-aos-delay="400"
-          >
-            <a href="#" class="text-decoration-none text-dark">
-              <div class="card artikel-card border-0 shadow-sm h-100">
-                <div class="artikel-img-wrapper">
-                  <img
-                    src="https://via.placeholder.com/400x250?text=Komunikasi+Digital"
-                    class="card-img-top"
-                    alt="Artikel 5"
-                  />
-                </div>
-                <div class="card-body">
-                  <h6 class="fw-bold">Teknologi dan Komunikasi Digital</h6>
-                  <p class="text-light small">
-                    Dampak kemajuan teknologi terhadap cara kita berkomunikasi
-                    setiap hari.
-                  </p>
+              <div class="news-item">
+                <img src="foto_hmjk/artikel5.png" />
+                <div>
+                  <span class="news-category">Studi Banding</span>
+                  <h6>Studi Banding antara HMJK dan HIMAKOM</h6>
+                  <span class="news-date">17 April 2025</span>
                 </div>
               </div>
-            </a>
-          </div>
-
-          <div
-            class="col-md-4 col-lg-3"
-            data-aos="zoom-in"
-            data-aos-delay="500"
-          >
-            <a href="#" class="text-decoration-none text-dark">
-              <div class="card artikel-card border-0 shadow-sm h-100">
-                <div class="artikel-img-wrapper">
-                  <img
-                    src="https://via.placeholder.com/400x250?text=Kreativitas+Penyiaran"
-                    class="card-img-top"
-                    alt="Artikel 6"
-                  />
-                </div>
-                <div class="card-body">
-                  <h6 class="fw-bold">Kreativitas dalam Penyiaran</h6>
-                  <p class="text-light small">
-                    Bagaimana ide kreatif bisa menjadikan program penyiaran
-                    lebih menarik.
-                  </p>
-                </div>
-              </div>
-            </a>
-          </div>
-
-          <div
-            class="col-md-4 col-lg-3"
-            data-aos="zoom-in"
-            data-aos-delay="600"
-          >
-            <a href="#" class="text-decoration-none text-dark">
-              <div class="card artikel-card border-0 shadow-sm h-100">
-                <div class="artikel-img-wrapper">
-                  <img
-                    src="https://via.placeholder.com/400x250?text=Etika+Komunikasi"
-                    class="card-img-top"
-                    alt="Artikel 7"
-                  />
-                </div>
-                <div class="card-body">
-                  <h6 class="fw-bold">Etika Komunikasi Modern</h6>
-                  <p class="text-light small">
-                    Menjadi komunikator yang profesional dan beretika di era
-                    digital.
-                  </p>
-                </div>
-              </div>
-            </a>
-          </div>
-
-          <div
-            class="col-md-4 col-lg-3"
-            data-aos="zoom-in"
-            data-aos-delay="700"
-          >
-            <a href="#" class="text-decoration-none text-dark">
-              <div class="card artikel-card border-0 shadow-sm h-100">
-                <div class="artikel-img-wrapper">
-                  <img
-                    src="https://via.placeholder.com/400x250?text=Komunikasi+Visual"
-                    class="card-img-top"
-                    alt="Artikel 8"
-                  />
-                </div>
-                <div class="card-body">
-                  <h6 class="fw-bold">Komunikasi Visual dan Desain</h6>
-                  <p class="text-light small">
-                    Visual yang kuat bisa menyampaikan pesan lebih efektif
-                    daripada kata-kata.
-                  </p>
-                </div>
-              </div>
-            </a>
+            </div>
           </div>
         </div>
       </div>
-
-      <!-- CSS Khusus Artikel -->
-      <style>
-        .artikel-card {
-          transition:
-            transform 0.3s ease,
-            box-shadow 0.3s ease;
-        }
-
-        .artikel-card:hover {
-          transform: translateY(-6px);
-          box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-        }
-
-        .artikel-img-wrapper {
-          overflow: hidden;
-          border-top-left-radius: 0.5rem;
-          border-top-right-radius: 0.5rem;
-        }
-
-        .artikel-img-wrapper img {
-          transition: transform 0.4s ease;
-          height: 180px;
-          object-fit: cover;
-          width: 100%;
-        }
-
-        .artikel-card:hover img {
-          transform: scale(1.1);
-        }
-      </style>
     </section>
 
     <!-- Kontak -->
@@ -2493,8 +2417,11 @@
 
             <p>
               <i class="bi bi-telephone"></i>
-              <a href="tel:+62214213380" class="text-decoration-none text-light"
-                >(021) 4213380</a
+              <a
+                href="https://wa.me/6283866757288"
+                target="_blank"
+                class="text-decoration-none text-light"
+                >083866757288 (Ailsa)</a
               >
             </p>
 
@@ -2730,14 +2657,22 @@
       });
     </script>
 
+    <!-- animasi backgroung -->
     <script>
       document.addEventListener("DOMContentLoaded", function () {
         const bgContainer = document.getElementById("bgAnimation");
-        const doveCount = 12;
+        const doveCount = 14;
+
+        // dua logo
+        const logos = ["foto_hmjk/hmjk.png", "foto_hmjk/anuraga.png"];
 
         for (let i = 0; i < doveCount; i++) {
           const dove = document.createElement("div");
           dove.classList.add("dove-bg");
+
+          // pilih logo secara random
+          const randomLogo = logos[Math.floor(Math.random() * logos.length)];
+          dove.style.backgroundImage = `url(${randomLogo})`;
 
           const left = Math.random() * 100;
           const size = 80 + Math.random() * 100;
