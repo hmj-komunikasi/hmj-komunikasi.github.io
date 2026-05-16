@@ -89,9 +89,16 @@
 
     /* Navbar */
     .navbar {
-      background-color: var(--biru-tua) !important;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    }
+  background: transparent !important;
+  transition: 0.5s ease;
+  padding: 20px 0;
+}
+
+.navbar.scrolled {
+  background: #0b2c56 !important;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  padding: 10px 0;
+}
 
     .navbar-brand {
       font-weight: 600;
@@ -109,26 +116,98 @@
     }
 
     /* Hero */
-    .hero {
-      position: relative;
-      background:
-        linear-gradient(var(--transparan-biru), var(--transparan-biru)),
-        url("https://i.ytimg.com/vi/yAdxeEEpRI0/maxresdefault.jpg") no-repeat center center;
-      background-size: cover;
-      /* pastikan gambar menutupi layar */
-      background-position: center center;
-      /* posisi gambar tetap di tengah */
-      background-attachment: fixed;
-      /* efek parallax (opsional) */
-      width: 100%;
-      height: 100vh;
-      /* penuh 1 layar */
-      color: var(--putih);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
+   .hero {
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at center, rgba(255,255,255,0.03), transparent 40%),
+    linear-gradient(135deg,#111827,#0b1220,#1f2937);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at top left, rgba(255,255,255,0.03), transparent 30%),
+    radial-gradient(circle at bottom right, rgba(255,255,255,0.03), transparent 30%);
+  animation: gerakBg 8s ease-in-out infinite alternate;
+}
+
+@keyframes gerakBg {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(-20px);
+  }
+}
+
+/* HERO CONTENT */
+.hero-content {
+  text-align: center;
+  z-index: 2;
+  position: relative;
+}
+
+.hero-logo {
+  width: 300px;
+  transition: 0.5s ease;
+  animation: logoMuncul 2s ease;
+}
+
+@keyframes logoMuncul {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* LOGO BURAM */
+.hero-logo.blur {
+  filter: blur(4px);
+  opacity: 0.7;
+}
+
+.typing-text {
+  margin-top: 30px;
+  font-size: 3rem;
+  font-weight: bold;
+  color: white;
+  min-height: 80px;
+  letter-spacing: 2px;
+}
+
+.typing-text span {
+  border-right: 3px solid gold;
+  padding-right: 5px;
+  animation: blink 0.8s infinite;
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+
+/* SCROLL */
+.hero.shrink .hero-logo {
+  width: 70px;
+  transform: translate(-42vw,-38vh);
+}
+
+.hero.shrink .typing-text {
+  opacity: 0;
+  transition: 0.3s;
+}
 
     /* Tombol ke atas */
     #btnScrollTop {
@@ -542,13 +621,20 @@
 
   <!-- Wallpaper -->
   <section id="home" class="hero">
-    <div class="container" data-aos="zoom-in">
-      <h1>Selamat Datang di Himpunan Mahasiswa Jurusan Komunikasi</h1>
-      <p style="color: gold">
-        <b>Kabinet ANURAGA - Tumbuh dan Berjaya Bersama</b>
-      </p>
+  <div class="hero-content">
+
+    <img 
+      src="foto_hmjk/3d_hmjk_ke_1.png"
+      class="hero-logo"
+      id="heroLogo"
+    >
+
+    <div class="typing-text">
+      <span id="typing"></span>
     </div>
-  </section>
+
+  </div>
+</section>
 
   <!-- Profil -->
   <section id="profil" class="section-padding">
@@ -1902,6 +1988,70 @@
       }
     });
   </script>
+
+<script>
+  const navbar = document.querySelector(".navbar");
+  const hero = document.querySelector(".hero");
+  const typing = document.getElementById("typing");
+  const logo = document.getElementById("heroLogo");
+
+  const text = "Selamat Datang di HMJK";
+
+  let index = 0;
+  let deleting = false;
+
+  function typeEffect() {
+
+    // saat tulisan mulai muncul logo blur
+    if(index > 0){
+      logo.classList.add("blur");
+    } else {
+      logo.classList.remove("blur");
+    }
+
+    if(!deleting) {
+      typing.innerHTML = text.substring(0, index);
+      index++;
+
+      if(index > text.length) {
+        deleting = true;
+
+        setTimeout(typeEffect, 3000);
+        return;
+      }
+
+    } else {
+
+      typing.innerHTML = text.substring(0, index);
+      index--;
+
+      if(index < 0) {
+        deleting = false;
+
+        setTimeout(typeEffect, 1000);
+        return;
+      }
+    }
+
+    setTimeout(typeEffect, deleting ? 80 : 120);
+  }
+
+  typeEffect();
+
+  // navbar scroll
+  window.addEventListener("scroll", () => {
+
+    if(window.scrollY > 100){
+      navbar.classList.add("scrolled");
+      hero.classList.add("shrink");
+    } else {
+      navbar.classList.remove("scrolled");
+      hero.classList.remove("shrink");
+    }
+
+  });
+</script>
+
 </body>
 
 </html>
