@@ -89,16 +89,16 @@
 
     /* Navbar */
     .navbar {
-  background: transparent !important;
-  transition: 0.5s ease;
-  padding: 20px 0;
-}
+      background: transparent !important;
+      transition: 0.5s ease;
+      padding: 20px 0;
+    }
 
-.navbar.scrolled {
-  background: #0b2c56 !important;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-  padding: 10px 0;
-}
+    .navbar.scrolled {
+      background: #0b2c56 !important;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+      padding: 10px 0;
+    }
 
     .navbar-brand {
       font-weight: 600;
@@ -116,98 +116,100 @@
     }
 
     /* Hero */
-   .hero {
-  height: 100vh;
-  position: relative;
-  overflow: hidden;
-  background:
-    radial-gradient(circle at center, rgba(255,255,255,0.03), transparent 40%),
-    linear-gradient(135deg,#111827,#0b1220,#1f2937);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+    .hero {
+      height: 100vh;
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at center, rgba(255, 255, 255, 0.03), transparent 40%),
+        linear-gradient(135deg, #111827, #0b1220, #1f2937);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(circle at top left, rgba(255,255,255,0.03), transparent 30%),
-    radial-gradient(circle at bottom right, rgba(255,255,255,0.03), transparent 30%);
-  animation: gerakBg 8s ease-in-out infinite alternate;
-}
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at top left, rgba(255, 255, 255, 0.03), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(255, 255, 255, 0.03), transparent 30%);
+      animation: gerakBg 8s ease-in-out infinite alternate;
+    }
 
-@keyframes gerakBg {
-  from {
-    transform: translateY(0px);
-  }
-  to {
-    transform: translateY(-20px);
-  }
-}
+    @keyframes gerakBg {
+      from {
+        transform: translateY(0px);
+      }
 
-/* HERO CONTENT */
-.hero-content {
-  text-align: center;
-  z-index: 2;
-  position: relative;
-}
+      to {
+        transform: translateY(-20px);
+      }
+    }
 
-.hero-logo {
-  width: 300px;
-  transition: 0.5s ease;
-  animation: logoMuncul 2s ease;
-}
+    /* HERO CONTENT */
+    .hero-content {
+      text-align: center;
+      z-index: 2;
+      position: relative;
+    }
 
-@keyframes logoMuncul {
-  from {
-    opacity: 0;
-    transform: scale(0.5);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
+    .hero-logo {
+      width: 300px;
+      transition: 0.5s ease;
+      animation: logoMuncul 2s ease;
+    }
 
-/* LOGO BURAM */
-.hero-logo.blur {
-  filter: blur(4px);
-  opacity: 0.7;
-}
+    @keyframes logoMuncul {
+      from {
+        opacity: 0;
+        transform: scale(0.5);
+      }
 
-.typing-text {
-  margin-top: 30px;
-  font-size: 3rem;
-  font-weight: bold;
-  color: white;
-  min-height: 80px;
-  letter-spacing: 2px;
-}
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
 
-.typing-text span {
-  border-right: 3px solid gold;
-  padding-right: 5px;
-  animation: blink 0.8s infinite;
-}
+    /* LOGO BURAM */
+    .hero-logo.blur {
+      filter: blur(4px);
+      opacity: 0.7;
+    }
 
-@keyframes blink {
-  50% {
-    border-color: transparent;
-  }
-}
+    .typing-text {
+      margin-top: 30px;
+      font-size: clamp(2.3rem, 5vw, 2.8rem);
+      font-weight: bold;
+      color: white;
+      min-height: 80px;
+      letter-spacing: 2px;
+    }
 
-/* SCROLL */
-.hero.shrink .hero-logo {
-  width: 70px;
-  transform: translate(-42vw,-38vh);
-}
+    .typing-text span {
+      border-right: 3px solid gold;
+      padding-right: 5px;
+      animation: blink 0.8s infinite;
+    }
 
-.hero.shrink .typing-text {
-  opacity: 0;
-  transition: 0.3s;
-}
+    @keyframes blink {
+      50% {
+        border-color: transparent;
+      }
+    }
+
+    /* SCROLL */
+    .hero.shrink .hero-logo {
+      width: 70px;
+      transform: translate(-42vw, -38vh);
+    }
+
+    .hero.shrink .typing-text {
+      opacity: 0;
+      transition: 0.3s;
+    }
 
     /* Tombol ke atas */
     #btnScrollTop {
@@ -488,6 +490,25 @@
       }
     }
 
+    @media (max-width: 991.98px) {
+
+      #navbarNav {
+        position: absolute;
+        top: 100%;
+        right: 15px;
+        left: auto;
+        width: auto;
+      }
+
+      #navbarNav .navbar-nav {
+        flex-direction: row;
+        justify-content: flex-end;
+        padding: 10px 15px;
+        border-radius: 10px;
+      }
+
+    }
+
     .border {
       border: 1px solid #ddd !important;
     }
@@ -621,20 +642,16 @@
 
   <!-- Wallpaper -->
   <section id="home" class="hero">
-  <div class="hero-content">
+    <div class="hero-content">
 
-    <img 
-      src="foto_hmjk/3d_hmjk_ke_1.png"
-      class="hero-logo"
-      id="heroLogo"
-    >
+      <img src="foto_hmjk/3d_hmjk_ke_1.png" class="hero-logo" id="heroLogo">
 
-    <div class="typing-text">
-      <span id="typing"></span>
+      <div class="typing-text">
+        <span id="typing"></span>
+      </div>
+
     </div>
-
-  </div>
-</section>
+  </section>
 
   <!-- Profil -->
   <section id="profil" class="section-padding">
@@ -656,7 +673,8 @@
                   line-height: 1.8;
                 ">
               <li class="text-center">
-                <strong>HMJK</strong> adalah wadah bagi mahasiswa komunikasi yang berintegritas, kompeten, dan kreatif untuk
+                <strong>HMJK</strong> adalah wadah bagi mahasiswa komunikasi yang berintegritas, kompeten, dan kreatif
+                untuk
                 mengembangkan potensi, memperluas jaringan, mengaplikasikan ilmu, serta mempererat kebersamaan agar
                 bermanfaat bagi sesama.
               </li>
@@ -669,15 +687,17 @@
             <img src="foto_hmjk/3d_anuraga_ke_1.png" style="width: 55%" alt="anuraga" class="img-fluid rounded" />
           </div>
           <div class="col-md-7 order-2 order-md-1">
-            <h4 class="fw-bold text-warning text-center">KABINET ANURAGA</h4>
+            <h4 class="fw-bold text-warning text-center">Kabinet Anuraga</h4>
             <ul class="text-start" style="
                   list-style-type: none;
                   padding-left: 0;
                   line-height: 1.8;
                 ">
               <li class="text-center">
-                <strong>Kabinet Anuraga</strong> adalah wadah kebersamaan yang berlandaskan cinta, ketulusan, dan keilmuan untuk
-                memperkuat solidaritas, keberanian, profesionalitas, serta integritas demi kemajuan Himpunan Mahasiswa Jurusan Komunikasi (HMJK).
+                <strong>Kabinet Anuraga</strong> adalah wadah kebersamaan yang berlandaskan cinta, ketulusan, dan
+                keilmuan untuk
+                memperkuat solidaritas, keberanian, profesionalitas, serta integritas demi kemajuan Himpunan Mahasiswa
+                Jurusan Komunikasi (HMJK).
               </li>
             </ul>
           </div>
@@ -751,7 +771,7 @@
           <div class="row justify-content-center">
             <div class="col-md-4 mb-4" data-aos="zoom-in">
               <div class="card h-100 shadow-sm">
-                <img src="foto_hmjk/bph.png" class="card-img-top" alt="Bendahara" />
+                <img src="foto_hmjk/struktur_organisasi/ketum_waketum.jpg" class="card-img-top" alt="Bendahara" />
                 <div class="card-body">
                   <h6 class="fw-bold">Ketum dan Waketum</h6>
                   <p>
@@ -762,7 +782,7 @@
             </div>
             <div class="col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="100">
               <div class="card h-100 shadow-sm">
-                <img src="foto_hmjk/sekretaris.jpg" class="card-img-top" alt="Sekretaris 1" />
+                <img src="foto_hmjk/struktur_organisasi/sekretaris1-2.jpg" class="card-img-top" alt="Sekretaris 1" />
                 <div class="card-body">
                   <h6 class="fw-bold">Sekretaris</h6>
                   <p>
@@ -774,7 +794,8 @@
             </div>
             <div class="col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="200">
               <div class="card h-100 shadow-sm">
-                <img src="foto_hmjk/bendahara.jpg" class="card-img-top" alt="Koordinator Internal" />
+                <img src="foto_hmjk/struktur_organisasi/bendahara1-2.jpg" class="card-img-top"
+                  alt="Koordinator Internal" />
                 <div class="card-body">
                   <h6 class="fw-bold">Bendahara</h6>
                   <p>
@@ -795,7 +816,7 @@
           <div class="row justify-content-center">
             <div class="col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="200">
               <div class="card h-100 shadow-sm">
-                <img src="foto_hmjk/psdm/1.png" class="card-img-center" alt="Divisi Event" />
+                <img src="foto_hmjk/struktur_organisasi/psdm.jpg" class="card-img-center" alt="Divisi Event" />
                 <div class="card-body">
                   <h6 class="fw-bold">Divisi Pengembangan Sumber Daya Manusia</h6>
                   <p>
@@ -807,7 +828,7 @@
             </div>
             <div class="col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="100">
               <div class="card h-100 shadow-sm">
-                <img src="foto_hmjk/humas/2.png" class="card-img-top" alt="Divisi Humas" />
+                <img src="foto_hmjk/struktur_organisasi/humas.jpg" class="card-img-top" alt="Divisi Humas" />
                 <div class="card-body">
                   <h6 class="fw-bold">Divisi Hubungan Masyarakat</h6>
                   <p>
@@ -819,7 +840,7 @@
             </div>
             <div class="col-md-4 mb-4" data-aos="zoom-in">
               <div class="card h-100 shadow-sm">
-                <img src="foto_hmjk/multimedia/3.png" class="card-img-top" alt="Divisi Multimedia" />
+                <img src="foto_hmjk/struktur_organisasi/multimedia.jpg" class="card-img-top" alt="Divisi Multimedia" />
                 <div class="card-body">
                   <h6 class="fw-bold">Divisi Multimedia</h6>
                   <p>
@@ -831,7 +852,7 @@
             </div>
             <div class="col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="300">
               <div class="card h-100 shadow-sm">
-                <img src="foto_hmjk/ekraf/4.png" class="card-img-top" alt="Divisi Ekonomi Kreatif" />
+                <img src="foto_hmjk/struktur_organisasi/ekraf.jpg" class="card-img-top" alt="Divisi Ekonomi Kreatif" />
                 <div class="card-body">
                   <h6 class="fw-bold">Divisi Ekonomi Kreatif</h6>
                   <p>
@@ -1063,7 +1084,7 @@
             <img src="foto_hmjk/humas/ailsa.jpg" loading="lazy" alt="Eksternal" />
             <h6>Internal</h6>
             <p>
-             Menyebar info acara, menjaga komunikasi anggota, publikasi internal, mengawal citra HMJK
+              Menyebar info acara, menjaga komunikasi anggota, publikasi internal, mengawal citra HMJK
             </p>
           </div>
           <div class="card kartu">
@@ -1299,14 +1320,14 @@
             <img src="foto_hmjk/ekraf/reihana.jpg" loading="lazy" alt="Media Monitoring" />
             <h6>Staff</h6>
             <p>
-             Bekerja sama dengan semua anggota divisi ekraf di dalam proker HMJK
+              Bekerja sama dengan semua anggota divisi ekraf di dalam proker HMJK
             </p>
           </div>
           <div class="card kartu">
             <img src="foto_hmjk/ekraf/lisye.jpg" loading="lazy" alt="Media Monitoring" />
             <h6>Staf</h6>
             <p>
-             Bekerja sama dengan semua anggota divisi ekraf di dalam proker HMJK
+              Bekerja sama dengan semua anggota divisi ekraf di dalam proker HMJK
             </p>
           </div>
           <div class="card kartu">
@@ -1661,7 +1682,7 @@
                 <span class="news-date">17 April 2025</span>
               </div>
             </div>
-            
+
             <div class="news-item">
               <img src="foto_hmjk/artikel/artikel2.png" />
               <div>
@@ -1678,146 +1699,101 @@
 
   <!-- Kontak -->
   <section id="kontak" class="section-padding">
-  <div class="container">
-    <h2 class="text-center" data-aos="zoom-in">Kontak & Informasi</h2>
+    <div class="container">
+      <h2 class="text-center" data-aos="zoom-in">Kontak & Informasi</h2>
 
-    <div class="row mt-4">
-      <div class="col-md-6" data-aos="fade-up">
-        <h5><i class="bi bi-geo-alt-fill text-primary"></i> Alamat</h5>
-        <p>
-          Institut STIAMI, Jl. Pangkalan Asem No.55, RT.5/RW.7, Galur,
-          Kota Jakarta Pusat
-        </p>
+      <div class="row mt-4">
+        <div class="col-md-6" data-aos="fade-up">
+          <h5><i class="bi bi-geo-alt-fill text-primary"></i> Alamat</h5>
+          <p>
+            Institut STIAMI, Jl. Pangkalan Asem No.55, RT.5/RW.7, Galur,
+            Kota Jakarta Pusat
+          </p>
 
-        <p>
-          <i class="bi bi-telephone"></i>
-          <a
-            href="https://wa.me/6283866757288"
-            target="_blank"
-            class="text-decoration-none text-light"
-          >
-            083866757288 (Ailsa)
-          </a>
-        </p>
+          <p>
+            <i class="bi bi-telephone"></i>
+            <a href="https://wa.me/6283866757288" target="_blank" class="text-decoration-none text-light">
+              083866757288 (Ailsa)
+            </a>
+          </p>
 
-        <p>
-          <i class="bi bi-globe"></i>
-          <a
-            href="https://stiami.ac.id"
-            target="_blank"
-            class="text-decoration-none text-light"
-          >
-            stiami.ac.id
-          </a>
-        </p>
+          <p>
+            <i class="bi bi-globe"></i>
+            <a href="https://stiami.ac.id" target="_blank" class="text-decoration-none text-light">
+              stiami.ac.id
+            </a>
+          </p>
 
-        <p>
-          <i class="bi bi-instagram"></i>
-          <a
-            href="https://www.instagram.com/hmj_komunikasi"
-            target="_blank"
-            class="text-decoration-none text-light"
-          >
-            @hmj_komunikasi
-          </a>
-        </p>
-      </div>
+          <p>
+            <i class="bi bi-instagram"></i>
+            <a href="https://www.instagram.com/hmj_komunikasi" target="_blank" class="text-decoration-none text-light">
+              @hmj_komunikasi
+            </a>
+          </p>
+        </div>
 
-      <div class="col-md-6" data-aos="fade-up">
-        <h5>
-          <i class="bi bi-envelope-paper-fill text-success"></i> Kirim Pesan
-        </h5>
+        <div class="col-md-6" data-aos="fade-up">
+          <h5>
+            <i class="bi bi-envelope-paper-fill text-success"></i> Kirim Pesan
+          </h5>
 
-        <form
-          id="myForm"
-          class="mt-3 p-3 rounded shadow-sm"
-          style="font-size: 0.9rem"
-        >
-          <div class="row g-2">
-            <div class="col-md-6">
-              <input
-                type="text"
-                class="form-control form-control-sm"
-                name="nama"
-                required
-                placeholder="Nama *"
-              />
+          <form id="myForm" class="mt-3 p-3 rounded shadow-sm" style="font-size: 0.9rem">
+            <div class="row g-2">
+              <div class="col-md-6">
+                <input type="text" class="form-control form-control-sm" name="nama" required placeholder="Nama *" />
+              </div>
+
+              <div class="col-md-6">
+                <input type="email" class="form-control form-control-sm" name="email" required placeholder="Email *" />
+              </div>
+
+              <div class="col-md-6">
+                <input type="tel" class="form-control form-control-sm" name="hp" required
+                  placeholder="No. Handphone *" />
+              </div>
+
+              <div class="col-md-6">
+                <input type="text" class="form-control form-control-sm" name="subject"
+                  placeholder="Subject (opsional)" />
+              </div>
+
+              <div class="col-12">
+                <textarea class="form-control form-control-sm" name="komentar" rows="2"
+                  placeholder="Komentar (opsional)"></textarea>
+              </div>
             </div>
 
-            <div class="col-md-6">
-              <input
-                type="email"
-                class="form-control form-control-sm"
-                name="email"
-                required
-                placeholder="Email *"
-              />
-            </div>
-
-            <div class="col-md-6">
-              <input
-                type="tel"
-                class="form-control form-control-sm"
-                name="hp"
-                required
-                placeholder="No. Handphone *"
-              />
-            </div>
-
-            <div class="col-md-6">
-              <input
-                type="text"
-                class="form-control form-control-sm"
-                name="subject"
-                placeholder="Subject (opsional)"
-              />
-            </div>
-
-            <div class="col-12">
-              <textarea
-                class="form-control form-control-sm"
-                name="komentar"
-                rows="2"
-                placeholder="Komentar (opsional)"
-              ></textarea>
-            </div>
-          </div>
-
-          <button
-            type="button"
-            onclick="SubForm()"
-            class="btn btn-custom btn-sm w-100 mt-2"
-          >
-            Kirim
-          </button>
-        </form>
+            <button type="button" onclick="SubForm()" class="btn btn-custom btn-sm w-100 mt-2">
+              Kirim
+            </button>
+          </form>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- Script Kontak -->
-<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-<script>
-  function SubForm() {
-    $.ajax({
-      url: "https://api.apispreadsheets.com/data/znuXqiZrK0e20Njk/",
-      type: "post",
-      data: $("#myForm").serializeArray(),
-      headers: {
-        accessKey: "4153b44be710cea098f98af3b7628f4e",
-        secretKey: "6ee0ae44f22679295616a2b7c7eb76ae"
-      },
-      success: function () {
-        alert("Pesan berhasil dikirim");
-        $("#myForm")[0].reset();
-      },
-      error: function () {
-        alert("Terjadi kesalahan, coba lagi");
-      }
-    });
-  }
-</script>
+  <!-- Script Kontak -->
+  <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+  <script>
+    function SubForm() {
+      $.ajax({
+        url: "https://api.apispreadsheets.com/data/znuXqiZrK0e20Njk/",
+        type: "post",
+        data: $("#myForm").serializeArray(),
+        headers: {
+          accessKey: "4153b44be710cea098f98af3b7628f4e",
+          secretKey: "6ee0ae44f22679295616a2b7c7eb76ae"
+        },
+        success: function () {
+          alert("Pesan berhasil dikirim");
+          $("#myForm")[0].reset();
+        },
+        error: function () {
+          alert("Terjadi kesalahan, coba lagi");
+        }
+      });
+    }
+  </script>
 
   <!-- Footer -->
   <footer class="text-center">
@@ -1989,68 +1965,69 @@
     });
   </script>
 
-<script>
-  const navbar = document.querySelector(".navbar");
-  const hero = document.querySelector(".hero");
-  const typing = document.getElementById("typing");
-  const logo = document.getElementById("heroLogo");
+  <!-- wallpaper -->
+  <script>
+    const navbar = document.querySelector(".navbar");
+    const hero = document.querySelector(".hero");
+    const typing = document.getElementById("typing");
+    const logo = document.getElementById("heroLogo");
 
-  const text = "Selamat Datang di HMJK";
+    const text = "Selamat Datang di Himpunan Mahasiswa Jurusan Komunikasi";
 
-  let index = 0;
-  let deleting = false;
+    let index = 0;
+    let deleting = false;
 
-  function typeEffect() {
+    function typeEffect() {
 
-    // saat tulisan mulai muncul logo blur
-    if(index > 0){
-      logo.classList.add("blur");
-    } else {
-      logo.classList.remove("blur");
-    }
-
-    if(!deleting) {
-      typing.innerHTML = text.substring(0, index);
-      index++;
-
-      if(index > text.length) {
-        deleting = true;
-
-        setTimeout(typeEffect, 3000);
-        return;
+      // saat tulisan mulai muncul logo blur
+      if (index > 0) {
+        logo.classList.add("blur");
+      } else {
+        logo.classList.remove("blur");
       }
 
-    } else {
+      if (!deleting) {
+        typing.innerHTML = text.substring(0, index);
+        index++;
 
-      typing.innerHTML = text.substring(0, index);
-      index--;
+        if (index > text.length) {
+          deleting = true;
 
-      if(index < 0) {
-        deleting = false;
+          setTimeout(typeEffect, 3000);
+          return;
+        }
 
-        setTimeout(typeEffect, 1000);
-        return;
+      } else {
+
+        typing.innerHTML = text.substring(0, index);
+        index--;
+
+        if (index < 0) {
+          deleting = false;
+
+          setTimeout(typeEffect, 1000);
+          return;
+        }
       }
+
+      setTimeout(typeEffect, deleting ? 80 : 120);
     }
 
-    setTimeout(typeEffect, deleting ? 80 : 120);
-  }
+    typeEffect();
 
-  typeEffect();
+    // navbar scroll
+    window.addEventListener("scroll", () => {
 
-  // navbar scroll
-  window.addEventListener("scroll", () => {
+      if (window.scrollY > 100) {
+        navbar.classList.add("scrolled");
+        hero.classList.add("shrink");
+      } else {
+        navbar.classList.remove("scrolled");
+        hero.classList.remove("shrink");
+      }
 
-    if(window.scrollY > 100){
-      navbar.classList.add("scrolled");
-      hero.classList.add("shrink");
-    } else {
-      navbar.classList.remove("scrolled");
-      hero.classList.remove("shrink");
-    }
-
-  });
-</script>
+    });
+  </script>
 
 </body>
 
